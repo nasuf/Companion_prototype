@@ -26,6 +26,7 @@ document.addEventListener("click",e=>{
     return;
   }
   if(a==="movie-toggle"){state.movieControls=!state.movieControls;el.classList.toggle("controls-on",state.movieControls);return}
+  if(a==="offline-ticket-toggle"){state.offlineTicketFlipped=!state.offlineTicketFlipped;el.classList.toggle("is-flipped",state.offlineTicketFlipped);el.setAttribute("aria-pressed",String(state.offlineTicketFlipped));return}
   if(a==="movie-pick"){const top=document.querySelector(".cinema-scroll-v6")?.scrollTop||0;state.movieIndex=Number(el.dataset.index)||0;state.movieControls=false;render();scrollMovieRail(top);return}
   if(a==="movie-slide"){const top=document.querySelector(".cinema-scroll-v6")?.scrollTop||0;state.movieIndex=(state.movieIndex+Number(el.dataset.dir)+movieCatalog.length)%movieCatalog.length;state.movieControls=false;render();scrollMovieRail(top);return}
   if(a==="music-display-toggle"){const top=document.querySelector(".music-scroll-v7")?.scrollTop||0;state.musicPanel=state.musicPanel==="lyrics"?"wave":"lyrics";render();requestAnimationFrame(()=>{const scroller=document.querySelector(".music-scroll-v7");if(scroller)scroller.scrollTop=top});return}

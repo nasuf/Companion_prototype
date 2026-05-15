@@ -8813,3 +8813,204 @@ button:active,.paper-card:active,.card-msg:active,.drawer-btn:active,.round:acti
   border:1px solid rgba(255,255,255,.10);
   box-shadow:0 10px 24px rgba(0,0,0,.16);
 }
+
+/* Offline cinema ticket flip and companion itinerary. */
+.offline-page-v6 .offline-ticket-v6{
+  display:block;
+  width:100%;
+  min-height:278px;
+  padding:0;
+  border:0;
+  border-radius:32px;
+  background:transparent;
+  box-shadow:none;
+  color:#17130f;
+  text-align:left;
+  font:inherit;
+  overflow:visible;
+  cursor:pointer;
+  perspective:1100px;
+}
+.offline-page-v6 .offline-ticket-v6:before,
+.offline-page-v6 .offline-ticket-v6:after{
+  display:none;
+}
+.offline-ticket-inner-v6{
+  position:absolute;
+  inset:0;
+  transform-style:preserve-3d;
+  transition:transform 620ms cubic-bezier(.2,.72,.22,1);
+}
+.offline-ticket-v6.is-flipped .offline-ticket-inner-v6{
+  transform:rotateY(180deg);
+}
+.offline-ticket-face-v6{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  padding:20px;
+  border-radius:inherit;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  background:
+    radial-gradient(128px 112px at 84% 18%,rgba(255,255,255,.46),transparent 65%),
+    linear-gradient(145deg,#ffe2ce 0%,#fff8ec 52%,#eef8ff 100%);
+  box-shadow:0 28px 58px rgba(160,108,62,.16),inset 0 1px 0 rgba(255,255,255,.8);
+}
+.offline-ticket-face-v6:before,
+.offline-ticket-face-v6:after{
+  content:"";
+  position:absolute;
+  top:185px;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:#f8fbf8;
+  box-shadow:inset 0 0 18px rgba(74,52,35,.04);
+}
+.offline-ticket-face-v6:before{left:-17px}
+.offline-ticket-face-v6:after{right:-17px}
+.offline-ticket-front-v6{
+  transform:rotateY(0);
+}
+.offline-ticket-back-v6{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transform:rotateY(180deg);
+  background:
+    radial-gradient(160px 120px at 92% 8%,rgba(31,111,255,.13),transparent 68%),
+    linear-gradient(145deg,#fff7ec 0%,#f8fbf6 48%,#eaf6ff 100%);
+}
+.offline-ticket-back-v6 h2{
+  max-width:230px;
+  font-size:28px;
+}
+.offline-ticket-pass-v6{
+  display:grid;
+  grid-template-columns:108px 1fr;
+  align-items:center;
+  gap:14px;
+  padding-top:16px;
+  border-top:1px dashed rgba(23,19,15,.16);
+}
+.offline-qr-v6{
+  position:relative;
+  width:104px;
+  height:104px;
+  border-radius:22px;
+  background:#fff;
+  box-shadow:0 16px 34px rgba(24,36,46,.10),inset 0 0 0 1px rgba(24,36,46,.08);
+}
+.offline-qr-v6 i{
+  position:absolute;
+  border-radius:2px;
+  background:#111820;
+}
+.offline-ticket-pass-v6 small{
+  display:block;
+  font-size:10px;
+  font-weight:900;
+  color:rgba(23,19,15,.45);
+}
+.offline-ticket-pass-v6 strong{
+  display:block;
+  margin-top:4px;
+  font-size:20px;
+  line-height:1.05;
+  letter-spacing:.02em;
+  color:#111820;
+}
+.offline-ticket-pass-v6 span{
+  display:block;
+  margin-top:8px;
+  font-size:11px;
+  line-height:1.45;
+  color:rgba(23,19,15,.56);
+}
+.offline-ticket-tap-v6{
+  position:absolute;
+  right:18px;
+  bottom:17px;
+  height:24px;
+  padding:0 10px;
+  border-radius:999px;
+  display:grid;
+  place-items:center;
+  color:rgba(23,19,15,.48);
+  background:rgba(255,255,255,.46);
+  font-size:10px;
+  font-weight:900;
+}
+.offline-companion-v6{
+  margin-top:18px;
+}
+.offline-companion-step-v6{
+  min-height:64px;
+  display:grid;
+  grid-template-columns:58px 1fr;
+  gap:12px;
+  align-items:center;
+  border-bottom:1px solid rgba(20,31,42,.07);
+}
+.offline-companion-step-v6 time{
+  font-size:17px;
+  font-weight:950;
+  color:#ff6a3d;
+  font-variant-numeric:tabular-nums;
+}
+.offline-companion-step-v6 b{
+  display:block;
+  color:#111820;
+  font-size:14px;
+}
+.offline-companion-step-v6 p{
+  margin-top:4px;
+  color:rgba(20,31,42,.52);
+  font-size:11.6px;
+  line-height:1.42;
+}
+:root[data-theme="dark"] .offline-page-v6 .offline-ticket-v6{
+  background:transparent;
+  box-shadow:none;
+  border:0;
+}
+:root[data-theme="dark"] .offline-ticket-face-v6{
+  border:1px solid rgba(255,255,255,.18);
+  background:
+    radial-gradient(190px 150px at 86% 16%,rgba(31,111,255,.16),transparent 72%),
+    linear-gradient(145deg,rgba(255,122,61,.20),rgba(255,255,255,.075) 54%,rgba(31,111,255,.14));
+  box-shadow:0 26px 62px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.16);
+}
+:root[data-theme="dark"] .offline-ticket-face-v6:before,
+:root[data-theme="dark"] .offline-ticket-face-v6:after{
+  background:#111a17;
+}
+:root[data-theme="dark"] .offline-ticket-back-v6{
+  background:
+    radial-gradient(180px 132px at 84% 12%,rgba(31,111,255,.22),transparent 70%),
+    linear-gradient(145deg,rgba(255,122,61,.16),rgba(255,255,255,.09) 50%,rgba(24,198,192,.12));
+}
+:root[data-theme="dark"] .offline-ticket-pass-v6{
+  border-top-color:rgba(255,255,255,.18);
+}
+:root[data-theme="dark"] .offline-qr-v6{
+  background:#f7fbf9;
+  box-shadow:0 18px 36px rgba(0,0,0,.24),inset 0 0 0 1px rgba(255,255,255,.42);
+}
+:root[data-theme="dark"] .offline-ticket-pass-v6 small,
+:root[data-theme="dark"] .offline-ticket-pass-v6 span,
+:root[data-theme="dark"] .offline-ticket-tap-v6,
+:root[data-theme="dark"] .offline-companion-step-v6 p{
+  color:rgba(235,242,238,.62);
+}
+:root[data-theme="dark"] .offline-ticket-pass-v6 strong,
+:root[data-theme="dark"] .offline-companion-step-v6 b{
+  color:#f7fbf9;
+}
+:root[data-theme="dark"] .offline-ticket-tap-v6{
+  background:rgba(255,255,255,.10);
+}
+:root[data-theme="dark"] .offline-companion-step-v6{
+  border-bottom-color:rgba(255,255,255,.09);
+}
