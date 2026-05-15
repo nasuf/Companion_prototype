@@ -5847,6 +5847,7 @@ button:active,.paper-card:active,.card-msg:active,.drawer-btn:active,.round:acti
 }
 .screen[data-page="online"] .status{color:#14191e}
 .online-hub-v5{
+  padding-top:0;
   color:#13171b;
   background:
     radial-gradient(290px 240px at 86% 8%,rgba(123,190,255,.28),transparent 70%),
@@ -5947,13 +5948,13 @@ button:active,.paper-card:active,.card-msg:active,.drawer-btn:active,.round:acti
   border-radius:32px;
   color:#11161a;
   border:1px solid rgba(255,255,255,.86);
-  background:linear-gradient(145deg,rgba(255,255,255,.70),rgba(255,255,255,.42));
+  background:rgba(255,255,255,.34);
   box-shadow:
     0 28px 64px rgba(64,84,106,.14),
     0 14px 30px color-mix(in srgb,var(--portal),transparent 88%),
     inset 0 1px 0 rgba(255,255,255,.96),
     inset 0 -1px 0 rgba(37,57,70,.06);
-  backdrop-filter:blur(28px) saturate(1.24);
+  backdrop-filter:none;
   -webkit-mask-image:none;
   mask-image:none;
 }
@@ -5964,8 +5965,7 @@ button:active,.paper-card:active,.card-msg:active,.drawer-btn:active,.round:acti
 .online-hub-v5 .portal-card:nth-child(3):active{transform:scale(.985) translateY(1px)}
 .online-hub-v5 .portal-card:before{
   background:
-    radial-gradient(120px 96px at 72% 18%,rgba(255,255,255,.45),transparent 58%),
-    linear-gradient(180deg,rgba(255,255,255,.06) 0%,rgba(255,255,255,.04) 38%,rgba(255,255,255,.58) 76%,rgba(255,255,255,.84) 100%);
+    radial-gradient(120px 96px at 72% 18%,rgba(255,255,255,.16),transparent 58%);
 }
 .online-hub-v5 .portal-card:after{
   left:10px;
@@ -5982,8 +5982,8 @@ button:active,.paper-card:active,.card-msg:active,.drawer-btn:active,.round:acti
 }
 .online-hub-v5 .portal-art{
   inset:-10px;
-  filter:saturate(.96) contrast(.98) brightness(1.05);
-  opacity:.94;
+  filter:none;
+  opacity:1;
 }
 .online-hub-v5 .portal-art:after{
   height:56%;
@@ -5993,17 +5993,17 @@ button:active,.paper-card:active,.card-msg:active,.drawer-btn:active,.round:acti
   mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.08) 20%,rgba(0,0,0,.42) 52%,#000 100%);
 }
 .online-hub-v5 .portal-card.movie .portal-art{
-  background-image:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,245,238,.32)),url("assets/prototype/movie-bouquet.jpg");
+  background-image:url("assets/prototype/movie-bouquet.jpg");
   background-position:center 26%;
 }
 .online-hub-v5 .portal-card.game .portal-art{
-  background-image:linear-gradient(145deg,rgba(229,255,246,.20),rgba(203,226,255,.36)),url("assets/prototype/game-pieces.jpg");
+  background-image:url("assets/prototype/game-pieces.jpg");
 }
 .online-hub-v5 .portal-card.daily .portal-art{
-  background-image:linear-gradient(145deg,rgba(255,255,255,.10),rgba(226,210,255,.30)),url("assets/prototype/daily-journal.jpg");
+  background-image:url("assets/prototype/daily-journal.jpg");
 }
 .online-hub-v5 .portal-card.music .portal-art{
-  background-image:linear-gradient(145deg,rgba(235,245,255,.22),rgba(31,111,255,.18)),url("assets/prototype/vinyl-record.jpg");
+  background-image:url("assets/prototype/vinyl-record.jpg");
 }
 .online-hub-v5 .portal-card h3{
   margin:0 20px;
@@ -6136,17 +6136,20 @@ button:active,.paper-card:active,.card-msg:active,.drawer-btn:active,.round:acti
 .composer{bottom:80px}
 .chat-scroll{padding-bottom:142px}
 .online-hub-v5 .portal-card:after{
-  inset:0;
-  height:100%;
+  left:0;
+  right:0;
+  bottom:0;
+  top:auto;
+  height:62%;
   border:0;
-  border-radius:inherit;
+  border-radius:0 0 inherit inherit;
   box-shadow:none;
   backdrop-filter:none;
   background:
-    linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.12) 36%,rgba(255,255,255,.68) 73%,rgba(255,255,255,.92) 100%),
+    linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.86) 22%,rgba(255,255,255,.98) 58%,rgba(255,255,255,.98) 100%),
     radial-gradient(170px 120px at 16% 86%,color-mix(in srgb,var(--portal),transparent 84%),transparent 72%);
-  -webkit-mask-image:none;
-  mask-image:none;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.62) 18%,#000 42%);
+  mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.62) 18%,#000 42%);
 }
 .online-hub-v5 .portal-art:after{
   content:none;
@@ -6157,11 +6160,11 @@ button:active,.paper-card:active,.card-msg:active,.drawer-btn:active,.round:acti
   z-index:3;
 }
 .online-hub-v5 .portal-card h3{
-  text-shadow:0 1px 0 rgba(255,255,255,.76);
+  text-shadow:none;
 }
 .online-hub-v5 .portal-card p,
 .online-hub-v5 .portal-card footer{
-  text-shadow:0 1px 0 rgba(255,255,255,.56);
+  text-shadow:none;
 }
 .msg .bubble{
   position:relative;
@@ -6942,7 +6945,7 @@ button:active,.paper-card:active,.card-msg:active,.drawer-btn:active,.round:acti
   background:
     linear-gradient(90deg,rgba(255,255,255,.42),rgba(255,255,255,.12));
   box-shadow:none;
-  font-size:20px;
+  font-size:17px;
   font-weight:880;
   color:#10161a;
 }
