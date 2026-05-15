@@ -15,7 +15,7 @@ function render(){
   requestAnimationFrame(()=>{const s=document.querySelector(".chat-scroll");if(s)s.scrollTop=s.scrollHeight});
 }
 
-function activeTab(){if(["online","music","movie","game","daily"].includes(state.page))return"online";if(["scene","aiAccount","offlineInvite","progress"].includes(state.page))return"scene";if(state.page==="profile")return"profile";return"chat"}
+function activeTab(){if(["online","music","movie","game","daily"].includes(state.page))return"online";if(["scene","offlineInvite","progress"].includes(state.page))return"scene";if(state.page==="profile")return"profile";return"chat"}
 
 function tabbar(){const active=activeTab();return`<nav class="tabbar ${active}-tabbar">${tabItems.map(i=>`<button class="tab ${active===i[0]?"on":""}" aria-label="${i[2]}" data-action="tab" data-page="${i[0]}">${tabIcon(i[1])}</button>`).join("")}</nav>`}
 
@@ -23,4 +23,4 @@ function nav(title,shareKind="",back="chat"){return`<div class="nav"><button cla
 
 function tabTitle(icon,title,sub){return`<div class="tab-title"><div class="mark">${uiIcon(icon)||icon}</div><div><h2>${title}</h2><p>${sub}</p></div></div>`}
 
-function featurePage(page){const map={login,agents,createAgent,online,scene,weather,capsule,legacy,achieve,checkin,shop,music,movie,game,daily,aiAccount,offlineInvite,progress,profile};return map[page]?map[page]():chatPage()}
+function featurePage(page){const map={login,agents,createAgent,online,scene,weather,capsule,legacy,achieve,checkin,shop,music,movie,game,daily,offlineInvite,progress,profile};return map[page]?map[page]():chatPage()}
