@@ -3,6 +3,7 @@ function render(){
   setTheme(state.theme);
   document.querySelector(".screen")?.setAttribute("data-page", state.page);
   const app=document.getElementById("app");
+  app.classList.toggle("drawer-open", state.drawer);
   app.innerHTML=state.page==="chat"?chatPage():featurePage(state.page);
   if(["chat","online","scene","profile"].includes(state.page)&&!state.keyboard&&!state.emoji)app.insertAdjacentHTML("beforeend",tabbar());
   if(state.drawer)app.insertAdjacentHTML("beforeend",drawer());

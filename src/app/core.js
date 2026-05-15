@@ -60,12 +60,12 @@ const movieBarrage=[
   ["01:46","小芜：如果你不想说话，我们就先看完这一幕。"]
 ];
 const sideItems=[
-  ["weather","天气","#edf6f8","#2f6f85","#85c4d6"],
-  ["capsule","胶囊","#eef8f3","#34796d","#8acbb7"],
-  ["legacy","遗言","#f0f4f9","#486e93","#95b2d1"],
-  ["achieve","成就","#fbf0f3","#96556a","#dda0ae"],
-  ["checkin","打卡","#f0f8f1","#477b5d","#93ca9b"],
-  ["shop","商城","#fbf2eb","#93664d","#e1a982"]
+  ["weather","天气","#eaf4ff","#1f6fff","#18c6c0"],
+  ["capsule","胶囊","#eafff6","#18c6c0","#22c66b"],
+  ["legacy","遗言","#f0ecff","#7c3cff","#1f6fff"],
+  ["achieve","成就","#fff0e8","#ff6a3d","#ffbe3d"],
+  ["checkin","打卡","#efffed","#22c66b","#ffbe3d"],
+  ["shop","积分商城","#fff3e4","#ff8a3d","#ffbe3d"]
 ];
 const tabItems=[["chat","chat","聊天"],["online","online","线上交互"],["scene","scene","场景交互"],["profile","profile","个人中心"]];
 function uiIcon(name){
@@ -102,12 +102,12 @@ function tabIcon(name){
 }
 function sideIcon(name){
   const icons={
-    weather:`<svg class="side-svg" viewBox="0 0 32 32" fill="none"><path class="wash" d="M21.7 8.4a4.7 4.7 0 1 1-4.7 4.7 4.7 4.7 0 0 1 4.7-4.7Z"/><path class="ghost" d="M9.5 24.2h13.3c2.8 0 5-2 5-4.6s-2-4.6-4.6-4.6c-.8 0-1.5.2-2.1.5-1.1-2.4-3.4-3.9-6.2-3.9-3.8 0-6.8 2.7-7.2 6.1-2.3.5-3.8 2.2-3.8 4.2 0 1.4 1.2 2.3 3 2.3h2.6Z"/><path class="fine" d="M8.4 24.2h14.2c2.9 0 5.1-2 5.1-4.7 0-2.5-2-4.5-4.6-4.5-.8 0-1.5.2-2.2.5-1-2.3-3.4-3.9-6.1-3.9-3.7 0-6.8 2.7-7.2 6.2-2.3.5-3.8 2.2-3.8 4.2 0 1.4 1.2 2.2 2.9 2.2h1.7Z"/><path class="hair" d="M22 5.9v1.6M26.8 10.9h1.5M25.4 7.4l1-1.1M18.4 7.4l-1-1.1"/></svg>`,
-    capsule:`<svg class="side-svg" viewBox="0 0 32 32" fill="none"><g transform="rotate(-31 16 16)"><rect class="ghost" x="6.5" y="11.4" width="19" height="9.2" rx="4.6"/><rect class="fine" x="6.5" y="11.4" width="19" height="9.2" rx="4.6"/><path class="hair" d="M16 11.6v8.8"/><path class="hair" d="M10.8 16h3.1M18.4 16h2.9"/><circle cx="22.6" cy="16" r="1.15" fill="currentColor" opacity=".58"/></g></svg>`,
-    legacy:`<svg class="side-svg" viewBox="0 0 32 32" fill="none"><path class="ghost" d="M6.4 10.6h19.2v12.8H6.4z" rx="3.2"/><rect class="fine" x="6.4" y="10.6" width="19.2" height="12.8" rx="3.2"/><path class="fine" d="m8.5 12.6 7.5 5.7 7.5-5.7"/><path class="hair" d="m9 22 5.1-4M23 22l-5.1-4"/></svg>`,
-    achieve:`<svg class="side-svg" viewBox="0 0 32 32" fill="none"><path class="wash" d="M16 6.8c3.8 0 6.6 2.8 6.6 6.2s-2.8 6.2-6.6 6.2-6.6-2.8-6.6-6.2 2.8-6.2 6.6-6.2Z"/><path class="fine" d="M16 6.8c3.8 0 6.6 2.8 6.6 6.2s-2.8 6.2-6.6 6.2-6.6-2.8-6.6-6.2 2.8-6.2 6.6-6.2Z"/><path class="fine" d="m12.9 13.2 2.2 2.1 4.2-4.4"/><path class="hair" d="m12.5 18.3-1.1 6.5 4.6-2.3 4.6 2.3-1.1-6.5"/></svg>`,
-    checkin:`<svg class="side-svg" viewBox="0 0 32 32" fill="none"><circle class="ghost" cx="16" cy="16" r="9.7"/><path class="hair" d="M8.3 20.5c2.1 3.4 6.2 5.3 10.2 4.4 2.3-.5 4.3-1.8 5.6-3.7"/><circle class="fine" cx="16" cy="16" r="9.7"/><path class="fine" d="m10.8 16.5 3.7 3.5 7.5-8.1"/></svg>`,
-    shop:`<svg class="side-svg" viewBox="0 0 32 32" fill="none"><path class="ghost" d="M8.8 12.8h14.4l-.9 12.2H9.7L8.8 12.8Z"/><path class="fine" d="M8.8 12.8h14.4l-.9 12.2H9.7L8.8 12.8Z"/><path class="fine" d="M12.4 12.7c.1-3 1.7-5 3.6-5s3.5 2 3.6 5"/><path class="hair" d="M12.5 18.4h7M13.4 21.5h5.2"/></svg>`
+    weather:`<svg class="side-svg service-svg" viewBox="0 0 36 36"><rect class="tile" x="2" y="2" width="32" height="32" rx="10"/><circle class="tile-accent" cx="24.5" cy="11.5" r="4"/><path class="symbol" d="M10.2 23.7h14.1c2.5 0 4.4-1.7 4.4-3.9 0-2.1-1.8-3.8-4-3.8-.7 0-1.4.2-2 .5-1-2.1-3-3.3-5.5-3.3-3.3 0-5.9 2.3-6.2 5.4-2 .4-3.2 1.8-3.2 3.4 0 1.1.9 1.7 2.4 1.7Z"/><path class="symbol-line accent-line" d="M29 8.5v2.1M31.9 11.8h2M31 8.9l1.3-1.3"/></svg>`,
+    capsule:`<svg class="side-svg service-svg" viewBox="0 0 36 36"><rect class="tile" x="2" y="2" width="32" height="32" rx="10"/><g transform="rotate(-34 18 18)"><path class="symbol-line" d="M11.3 18h5.1"/><path class="symbol-line" d="M19.6 18h5.1"/><rect class="symbol-stroke" x="7.4" y="13.2" width="21.2" height="9.6" rx="4.8"/><path class="symbol-line accent-line" d="M18 13.2v9.6"/></g></svg>`,
+    legacy:`<svg class="side-svg service-svg" viewBox="0 0 36 36"><rect class="tile" x="2" y="2" width="32" height="32" rx="10"/><rect class="symbol-stroke" x="9" y="12" width="18" height="13" rx="3"/><path class="symbol-line" d="m10.4 13.6 7.6 5.8 7.6-5.8M10.6 24l5.2-4.2M25.4 24l-5.2-4.2"/><circle class="tile-accent" cx="26.2" cy="11.1" r="3.1"/></svg>`,
+    achieve:`<svg class="side-svg service-svg" viewBox="0 0 36 36"><rect class="tile" x="2" y="2" width="32" height="32" rx="10"/><circle class="symbol-stroke" cx="18" cy="15.1" r="6.2"/><path class="symbol-line" d="m14.8 15.1 2.3 2.2 4.3-4.6"/><path class="symbol" d="m13.9 20.8-1.2 7.2 5.3-2.8 5.3 2.8-1.2-7.2c-1.1 1-2.5 1.5-4.1 1.5s-3-.5-4.1-1.5Z"/><circle class="tile-accent" cx="24.4" cy="9.8" r="2.8"/></svg>`,
+    checkin:`<svg class="side-svg service-svg" viewBox="0 0 36 36"><rect class="tile" x="2" y="2" width="32" height="32" rx="10"/><rect class="symbol" x="10" y="10" width="16" height="17" rx="4"/><path class="tile-line" d="M13.3 18.2 16.8 21.5 23.2 14.4"/><path class="tile-line" d="M13 13.6h5.2"/><circle class="tile-accent" cx="25.2" cy="25" r="3"/></svg>`,
+    shop:`<svg class="side-svg service-svg" viewBox="0 0 36 36"><rect class="tile" x="2" y="2" width="32" height="32" rx="10"/><path class="symbol" d="M10.2 14.8h15.6l-1 12H11.2l-1-12Z"/><path class="tile-line" d="M14 14.8c.1-3.2 1.8-5.2 4-5.2s3.9 2 4 5.2M14.2 20h7.6M15.2 23.5h5.6"/><circle class="tile-accent" cx="25.5" cy="14" r="3"/></svg>`
   };
   return icons[name]||"";
 }
