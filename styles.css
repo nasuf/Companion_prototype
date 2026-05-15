@@ -3178,9 +3178,16 @@ button:active,.paper-card:active,.card-msg:active,.drawer-btn:active,.round:acti
   display:grid;
   justify-items:center;
   gap:7px;
+  animation:profileAvatarDriftV6 5.8s ease-in-out infinite;
+  will-change:transform;
 }
 .profile-person-v6.me{left:0;bottom:8px}
-.profile-person-v6.agent{right:0;top:0}
+.profile-person-v6.agent{
+  right:0;
+  top:0;
+  animation-name:profileAgentDriftV6;
+  animation-delay:-2.1s;
+}
 .profile-photo-v6{
   width:72px;
   height:72px;
@@ -3189,11 +3196,15 @@ button:active,.paper-card:active,.card-msg:active,.drawer-btn:active,.round:acti
   background:#dcefed;
   border:1px solid rgba(255,255,255,.82);
   box-shadow:0 22px 42px rgba(72,95,120,.16),inset 0 1px 0 rgba(255,255,255,.88);
+  transform-origin:center;
+  animation:profilePhotoBreathV6 4.8s ease-in-out infinite;
+  will-change:transform,filter;
 }
 .profile-person-v6.agent .profile-photo-v6{
   width:82px;
   height:82px;
   border-radius:28px;
+  animation-delay:-1.5s;
 }
 .profile-photo-v6 img{
   width:100%;
@@ -3218,6 +3229,9 @@ button:active,.paper-card:active,.card-msg:active,.drawer-btn:active,.round:acti
   height:34px;
   border-top:1.5px solid rgba(31,111,255,.26);
   transform:rotate(-18deg);
+  transform-origin:center;
+  animation:profileLinkWaveV6 5.2s ease-in-out infinite;
+  will-change:transform;
 }
 .profile-link-v6 i{
   position:absolute;
@@ -3226,10 +3240,13 @@ button:active,.paper-card:active,.card-msg:active,.drawer-btn:active,.round:acti
   border-radius:50%;
   background:#18c6c0;
   box-shadow:0 0 18px rgba(24,198,192,.38);
+  animation:profileNodeBreathV6 3.8s ease-in-out infinite;
+  transform-origin:center;
+  will-change:transform,filter;
 }
 .profile-link-v6 i:nth-child(1){left:0;top:-5px}
-.profile-link-v6 i:nth-child(2){left:34px;top:-5px;background:#ffbe3d}
-.profile-link-v6 i:nth-child(3){right:0;top:-5px;background:#7c3cff}
+.profile-link-v6 i:nth-child(2){left:34px;top:-5px;background:#ffbe3d;animation-delay:-1.2s}
+.profile-link-v6 i:nth-child(3){right:0;top:-5px;background:#7c3cff;animation-delay:-2.4s}
 .profile-section-v6{
   position:relative;
   margin-top:20px;
@@ -3411,6 +3428,26 @@ button:active,.paper-card:active,.card-msg:active,.drawer-btn:active,.round:acti
 @keyframes profileFloatB{
   from{transform:translate3d(0,0,0) rotate(-10deg) scale(1)}
   to{transform:translate3d(14px,-12px,0) rotate(-15deg) scale(1.04)}
+}
+@keyframes profileAvatarDriftV6{
+  0%,100%{transform:translate3d(0,0,0)}
+  50%{transform:translate3d(0,-4px,0)}
+}
+@keyframes profileAgentDriftV6{
+  0%,100%{transform:translate3d(0,0,0)}
+  50%{transform:translate3d(2px,3px,0)}
+}
+@keyframes profilePhotoBreathV6{
+  0%,100%{transform:scale(1);filter:saturate(1)}
+  50%{transform:scale(1.025);filter:saturate(1.08)}
+}
+@keyframes profileLinkWaveV6{
+  0%,100%{transform:rotate(-18deg) translate3d(0,0,0) scaleX(1)}
+  50%{transform:rotate(-16deg) translate3d(2px,-2px,0) scaleX(1.035)}
+}
+@keyframes profileNodeBreathV6{
+  0%,100%{transform:scale(.92);filter:saturate(1)}
+  50%{transform:scale(1.14);filter:saturate(1.18)}
 }
 .chat-page .card-msg{
   border-radius:24px;
@@ -8753,4 +8790,26 @@ button:active,.paper-card:active,.card-msg:active,.drawer-btn:active,.round:acti
   background:#f7fbf9;
   border-color:rgba(255,255,255,.70);
   box-shadow:0 16px 34px rgba(0,0,0,.24);
+}
+
+/* Dark scene map should dissolve into the page background instead of becoming a pale panel. */
+:root[data-theme="dark"] .scene-hub-v6 .scene-map-v6{
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px) 0 0/30px 100%,
+    linear-gradient(180deg,rgba(255,255,255,.035) 1px,transparent 1px) 0 0/100% 30px,
+    radial-gradient(142px 86px at 68% 42%,rgba(31,111,255,.13),transparent 74%),
+    radial-gradient(130px 82px at 36% 64%,rgba(24,198,192,.055),transparent 76%);
+  opacity:.86;
+  filter:none;
+  -webkit-mask-image:radial-gradient(ellipse at center,#000 42%,rgba(0,0,0,.62) 61%,transparent 86%);
+  mask-image:radial-gradient(ellipse at center,#000 42%,rgba(0,0,0,.62) 61%,transparent 86%);
+}
+:root[data-theme="dark"] .scene-hub-v6 .scene-map-v6 svg path:first-child{
+  stroke:rgba(255,255,255,.16);
+}
+:root[data-theme="dark"] .scene-hub-v6 .scene-map-v6 em{
+  color:#6ea2ff;
+  background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.07));
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 10px 24px rgba(0,0,0,.16);
 }
