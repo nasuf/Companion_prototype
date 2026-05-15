@@ -5,11 +5,12 @@ function render(){
   const app=document.getElementById("app");
   app.classList.toggle("drawer-open", state.drawer);
   app.innerHTML=state.page==="chat"?chatPage():featurePage(state.page);
-  if(["chat","online","scene","profile"].includes(state.page)&&!state.keyboard&&!state.emoji)app.insertAdjacentHTML("beforeend",tabbar());
+  if(["chat","online","scene","profile"].includes(state.page)&&!state.keyboard&&!state.emoji&&!state.more)app.insertAdjacentHTML("beforeend",tabbar());
   if(state.drawer)app.insertAdjacentHTML("beforeend",drawer());
   if(state.modal==="capsule")app.insertAdjacentHTML("beforeend",capsuleModal());
   if(state.keyboard&&state.page==="chat")app.insertAdjacentHTML("beforeend",keyboardPanel());
   if(state.emoji&&state.page==="chat")app.insertAdjacentHTML("beforeend",emojiPanel());
+  if(state.more&&state.page==="chat")app.insertAdjacentHTML("beforeend",chatMorePanel());
   if(state.photoViewer)app.insertAdjacentHTML("beforeend",photoViewer());
   if(state.page==="daily")bindDailyScroll();
   requestAnimationFrame(()=>{const s=document.querySelector(".chat-scroll");if(s)s.scrollTop=s.scrollHeight});

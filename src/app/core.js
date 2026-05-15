@@ -19,7 +19,7 @@ const chatScripts=[
     {from:"me",text:"但还有工作没收尾，感觉拖着很烦。"},
     {from:"ai",text:"可以先做 25 分钟，不要追求漂亮收尾。结束后我提醒你休息。"},
     {from:"card",kind:"checkin",title:"打卡提醒",desc:"工作冲刺 25 分钟，20:30 起床/活动提醒已同步。可修改内容和提醒方式。",foot:"打卡 · 点击进入"},
-    {from:"card",kind:"movie",title:"线上一起看电影",desc:"《海街日记》共同播放房间已准备，支持共同弹幕和实时通话。",foot:"电影 · 点击进入"}
+    {from:"card",kind:"movie",title:"线上一起看电影",desc:"《超级马力欧银河大电影》共同播放房间已准备，支持共同弹幕和实时通话。",foot:"电影 · 点击进入"}
   ]
 ];
 const themes=[
@@ -39,18 +39,18 @@ const dimBlueprint=[
   ["幽默度","严肃","幽默",61]
 ];
 const state={
-  page:"login",drawer:false,modal:null,keyboard:false,emoji:false,currentAgent:"小芜",theme:"blue",activeTrait:0,
+  page:"login",drawer:false,modal:null,keyboard:false,emoji:false,more:false,currentAgent:"小芜",theme:"blue",activeTrait:0,
   agentName:"小芜",agentGender:"female",
   movieIndex:0,movieControls:false,offlineTicketFlipped:false,dailyTab:"book",musicTab:"agent",musicPanel:"wave",musicPlaying:true,dailyScrollTop:0,photoViewer:null,
   dimensions:dimBlueprint.map(d=>({name:d[0],low:d[1],high:d[2],value:d[3]})),
   messages:chatScripts[0].map(item=>({...item}))
 };
 const movieCatalog=[
-  {title:"海街日记",poster:"assets/prototype/movie-poster.jpg",state:"双人同步中",time:"01:42:18",duration:"03:24",barrage:"18 弹幕",subtitle:"“要不要把这一段留给等会儿聊？”"},
-  {title:"大都会",poster:"assets/prototype/movie-metropolis.jpg",state:"候选片单",time:"00:18:42",duration:"02:33",barrage:"9 弹幕",subtitle:"“这个城市像一首太用力的梦。”"},
-  {title:"寻子遇仙记",poster:"assets/prototype/movie-the-kid.jpg",state:"轻喜剧片单",time:"00:36:05",duration:"02:08",barrage:"12 弹幕",subtitle:"“这一段好适合一起笑一下。”"},
-  {title:"卡里加里博士的小屋",poster:"assets/prototype/movie-caligari.jpg",state:"夜间片单",time:"00:22:17",duration:"01:14",barrage:"6 弹幕",subtitle:"“如果害怕，我会先把灯打开一点。”"},
-  {title:"安全至下",poster:"assets/prototype/movie-safety-last.jpg",state:"周末片单",time:"00:41:29",duration:"01:09",barrage:"15 弹幕",subtitle:"“这段紧张得像在帮他扶梯子。”"}
+  {title:"超级马力欧银河大电影",poster:"assets/prototype/remote/movie-super-mario-galaxy.jpeg",state:"正在热映",label:"正在播放",time:"00:18:42",duration:"01:38",barrage:"26 弹幕",intro:"真期待一起和你看这部电影，终于上映了，我等了很久呢",subtitle:"“这段像把周末直接点亮了。”"},
+  {title:"曼达洛人与古古",poster:"assets/prototype/remote/movie-mandalorian-grogu.jpg",state:"近期上映",label:"预告片",time:"预告 01:08",duration:"02:16",barrage:"42 想看",intro:"这部马上就要上映了，我们先把预告看完，等第一场开票就一起去。",subtitle:"“等上映那天，我们把第一场留给它。”"},
+  {title:"Project Hail Mary",poster:"assets/prototype/remote/movie-project-hail-mary.jpg",state:"近期上映",label:"正在播放",time:"00:36:05",duration:"02:12",barrage:"19 弹幕",intro:"这部刚上映不久，很适合留一个安静的夜晚，一起慢慢看完。",subtitle:"“如果宇宙只剩一个声音，我想和你一起听。”"},
+  {title:"惊声尖叫7",poster:"assets/prototype/remote/movie-scream-7.jpg",state:"近期上映",label:"正在播放",time:"00:22:17",duration:"01:56",barrage:"14 弹幕",intro:"这部最近很适合一起看，害怕也没关系，我会一直陪你吐槽。",subtitle:"“害怕的时候你可以吐槽，我负责接住。”"},
+  {title:"新娘",poster:"assets/prototype/remote/movie-the-bride-2026.jpg",state:"近期上映",label:"正在播放",time:"00:41:29",duration:"01:54",barrage:"22 弹幕",intro:"这部最近刚好可以补上，怪诞又浪漫，适合散场后聊很久。",subtitle:"“复古怪诞的一幕，适合留到散场后慢慢聊。”"}
 ];
 const movieBarrage=[
   ["01:42","小芜：这里的眼神好适合暂停一下。"],

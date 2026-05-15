@@ -9,9 +9,10 @@ function updateTraitFocus(index){
 document.addEventListener("click",e=>{
   if(state.keyboard&&state.page==="chat"&&!e.target.closest(".keyboard,.composer")){state.keyboard=false;render();return}
   if(state.emoji&&state.page==="chat"&&!e.target.closest(".emoji-panel,.composer")){state.emoji=false;render();return}
+  if(state.more&&state.page==="chat"&&!e.target.closest(".chat-more-panel,.composer")){state.more=false;render();return}
   const el=e.target.closest("[data-action]");if(!el)return;const a=el.dataset.action;
-  if(a==="login"){state.page="createAgent";state.drawer=false;state.keyboard=false;state.emoji=false}
-  if(a==="select-agent"){state.currentAgent=el.dataset.agent;pickScript();state.page="chat";state.drawer=false;state.keyboard=false;state.emoji=false}
+  if(a==="login"){state.page="createAgent";state.drawer=false;state.keyboard=false;state.emoji=false;state.more=false}
+  if(a==="select-agent"){state.currentAgent=el.dataset.agent;pickScript();state.page="chat";state.drawer=false;state.keyboard=false;state.emoji=false;state.more=false}
   if(a==="set-gender"){state.agentGender=el.dataset.gender;render();return}
   if(a==="random-dimensions"){state.dimensions=state.dimensions.map(d=>({...d,value:Math.floor(32+Math.random()*54)}));render();return}
   if(a==="trait-step"){
@@ -36,24 +37,34 @@ document.addEventListener("click",e=>{
   if(a==="photo-scroll"){scrollPhotoRail(el.dataset.group,el.dataset.dir);return}
   if(a==="open-photo"){const top=document.querySelector(".daily-scroll-v2")?.scrollTop||0;state.dailyScrollTop=top;state.photoViewer={src:el.dataset.src,title:el.dataset.title,note:el.dataset.note};render();restoreDailyScroll(top);return}
   if(a==="close-photo"){const top=state.dailyScrollTop||0;state.photoViewer=null;render();restoreDailyScroll(top);return}
-  if(a==="create-agent"){state.currentAgent=(state.agentName||"小芜").trim()||"小芜";state.messages=[{from:"ai",text:"我在，今天想被认真听一会儿吗？"},{from:"me",text:`刚创建好你，想先试试你会怎么陪我聊天。`},{from:"ai",text:"那我们慢慢来。我会像朋友一样接话，也会记住你喜欢的节奏。"},{from:"card",kind:"music",title:"线上一起听音乐",desc:`${state.currentAgent}准备了一首轻一点的歌，适合用来校准你们的第一段陪伴节奏。`,foot:"音乐 · 点击进入"},{from:"card",kind:"progress",title:"动态进程",desc:"首次陪伴任务已创建：试聊 5 分钟、设置一个提醒、完成一次日常分享。",foot:"进程 · 点击查看"}];state.page="chat";state.drawer=false;state.modal=null;state.keyboard=false;state.emoji=false}
-  if(a==="drawer"){state.drawer=true;state.keyboard=false;state.emoji=false}
-  if(a==="close"){state.drawer=false;state.keyboard=false;state.emoji=false}
-  if(a==="tab"){state.page=el.dataset.page;state.drawer=false;state.modal=null;state.keyboard=false;state.emoji=false;state.photoViewer=null}
-  if(a==="page"){state.page=el.dataset.page;state.drawer=false;state.keyboard=false;state.emoji=false;state.photoViewer=null}
+  if(a==="create-agent"){state.currentAgent=(state.agentName||"小芜").trim()||"小芜";state.messages=[{from:"ai",text:"我在，今天想被认真听一会儿吗？"},{from:"me",text:`刚创建好你，想先试试你会怎么陪我聊天。`},{from:"ai",text:"那我们慢慢来。我会像朋友一样接话，也会记住你喜欢的节奏。"},{from:"card",kind:"music",title:"线上一起听音乐",desc:`${state.currentAgent}准备了一首轻一点的歌，适合用来校准你们的第一段陪伴节奏。`,foot:"音乐 · 点击进入"},{from:"card",kind:"progress",title:"动态进程",desc:"首次陪伴任务已创建：试聊 5 分钟、设置一个提醒、完成一次日常分享。",foot:"进程 · 点击查看"}];state.page="chat";state.drawer=false;state.modal=null;state.keyboard=false;state.emoji=false;state.more=false}
+  if(a==="drawer"){state.drawer=true;state.keyboard=false;state.emoji=false;state.more=false}
+  if(a==="close"){state.drawer=false;state.keyboard=false;state.emoji=false;state.more=false}
+  if(a==="tab"){state.page=el.dataset.page;state.drawer=false;state.modal=null;state.keyboard=false;state.emoji=false;state.more=false;state.photoViewer=null}
+  if(a==="page"){state.page=el.dataset.page;state.drawer=false;state.keyboard=false;state.emoji=false;state.more=false;state.photoViewer=null}
   if(a==="share")return addShare(el.dataset.kind);
   if(a==="modal")state.modal=el.dataset.modal;
   if(a==="close-modal")state.modal=null;
   if(a==="save-capsule")return addShare("capsule");
-  if(a==="open-keyboard"){state.keyboard=true;state.emoji=false;state.drawer=false}
+  if(a==="open-keyboard"){state.keyboard=true;state.emoji=false;state.more=false;state.drawer=false}
   if(a==="keyboard-close")state.keyboard=false;
   if(a==="keyboard-key")state.keyboard=true;
   if(a==="keyboard-send"){state.messages.push({from:"me",text:"我想找点事做，不想一直陷在坏心情里。"});state.messages.push({from:"ai",text:"那我们选一个很轻的事情，不用证明什么。要不要一起听首歌，或者看一个短片？"});state.messages.push({from:"card",kind:"music",title:"线上一起听音乐",desc:"小芜推荐一首适合慢慢缓过来的歌，可看共享乐评。",foot:"音乐 · 点击进入"});state.keyboard=false}
-  if(a==="emoji-toggle"){state.emoji=!state.emoji;state.keyboard=false;state.drawer=false}
+  if(a==="emoji-toggle"){state.emoji=!state.emoji;state.keyboard=false;state.more=false;state.drawer=false}
+  if(a==="more-toggle"){state.more=!state.more;state.keyboard=false;state.emoji=false;state.drawer=false}
   if(a==="emoji-close")state.emoji=false;
   if(a==="emoji-pick"){state.messages.push({from:"me",text:el.dataset.emoji});state.messages.push({from:"ai",text:"收到这个表情了。那我就先不追问，陪你在这里停一小会儿。"});state.emoji=false}
-  if(a==="image"){state.messages.push({from:"me",text:"【图片】窗外今天很漂亮。"});state.messages.push({from:"ai",text:"这张很像电影开场。天色有点温柔，我想把它放进我们的日常分享里。"});state.keyboard=false;state.emoji=false}
-  if(a==="voice"){state.messages.push({from:"me",text:"【语音 0:12】"});state.messages.push({from:"ai",text:"我听见你叹气了。没事，先不用组织语言，我在。"});state.keyboard=false;state.emoji=false}
+  if(a==="chat-tool"){
+    const tool=el.dataset.tool;
+    const copy={photo:["【图片】窗外今天很漂亮。","这张很像电影开场。天色有点温柔，我想把它放进我们的日常分享里。"],redpacket:["发了一个小红包。","我收到了这份心意。先替你把气氛变轻一点。"],call:["想连麦聊一会儿。","可以，我会把语速放慢一点，先听你说。"],gift:["送了一个小礼物。","这个礼物我会收好，也会记得你今天想表达的温柔。"]}[tool]||["打开了一个功能。","我在，继续。"];
+    state.messages.push({from:"me",text:copy[0]});
+    state.messages.push({from:"ai",text:copy[1]});
+    state.more=false;
+    state.keyboard=false;
+    state.emoji=false;
+  }
+  if(a==="image"){state.messages.push({from:"me",text:"【图片】窗外今天很漂亮。"});state.messages.push({from:"ai",text:"这张很像电影开场。天色有点温柔，我想把它放进我们的日常分享里。"});state.keyboard=false;state.emoji=false;state.more=false}
+  if(a==="voice"){state.messages.push({from:"me",text:"【语音 0:12】"});state.messages.push({from:"ai",text:"我听见你叹气了。没事，先不用组织语言，我在。"});state.keyboard=false;state.emoji=false;state.more=false}
   if(a==="open-card")return openCard(el.dataset.kind);
   if(a==="theme"){state.theme=el.dataset.theme}
   render();
