@@ -39,7 +39,7 @@ const dimBlueprint=[
   ["幽默度","严肃","幽默",61]
 ];
 const state={
-  page:"login",drawer:false,modal:null,keyboard:false,emoji:false,currentAgent:"小芜",theme:"blue",
+  page:"login",drawer:false,modal:null,keyboard:false,emoji:false,currentAgent:"小芜",theme:"blue",activeTrait:0,
   agentName:"小芜",agentGender:"female",
   movieIndex:0,movieControls:false,dailyTab:"book",musicTab:"agent",musicPanel:"wave",musicPlaying:true,dailyScrollTop:0,photoViewer:null,
   dimensions:dimBlueprint.map(d=>({name:d[0],low:d[1],high:d[2],value:d[3]})),

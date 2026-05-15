@@ -6,6 +6,19 @@ document.addEventListener("click",e=>{
   if(a==="select-agent"){state.currentAgent=el.dataset.agent;pickScript();state.page="chat";state.drawer=false;state.keyboard=false;state.emoji=false}
   if(a==="set-gender"){state.agentGender=el.dataset.gender;render();return}
   if(a==="random-dimensions"){state.dimensions=state.dimensions.map(d=>({...d,value:Math.floor(32+Math.random()*54)}));render();return}
+  if(a==="trait-step"){
+    state.activeTrait=Math.max(0,Math.min(state.dimensions.length-1,Number(el.dataset.index)||0));
+    render();
+    requestAnimationFrame(()=>document.querySelector(`.trait-step-v3[data-step-index="${state.activeTrait}"]`)?.scrollIntoView({block:"center",behavior:"smooth"}));
+    return;
+  }
+  if(a==="trait-step-shift"){
+    const dir=Number(el.dataset.dir)||0;
+    state.activeTrait=Math.max(0,Math.min(state.dimensions.length-1,(state.activeTrait||0)+dir));
+    render();
+    requestAnimationFrame(()=>document.querySelector(`.trait-step-v3[data-step-index="${state.activeTrait}"]`)?.scrollIntoView({block:"center",behavior:"smooth"}));
+    return;
+  }
   if(a==="movie-toggle"){state.movieControls=!state.movieControls;el.classList.toggle("controls-on",state.movieControls);return}
   if(a==="movie-pick"){const top=document.querySelector(".cinema-scroll-v6")?.scrollTop||0;state.movieIndex=Number(el.dataset.index)||0;state.movieControls=false;render();scrollMovieRail(top);return}
   if(a==="movie-slide"){const top=document.querySelector(".cinema-scroll-v6")?.scrollTop||0;state.movieIndex=(state.movieIndex+Number(el.dataset.dir)+movieCatalog.length)%movieCatalog.length;state.movieControls=false;render();scrollMovieRail(top);return}
@@ -45,12 +58,19 @@ document.addEventListener("input",e=>{
     const i=Number(el.dataset.dimIndex);
     const v=Number(el.value);
     if(state.dimensions[i])state.dimensions[i].value=v;
+    state.activeTrait=i;
     el.style.setProperty("--v",v+"%");
     const row=el.closest(".dimension-row");
     const label=row&&row.querySelector(`[data-dim-value="${i}"]`);
     if(label)label.textContent=String(v);
     const dot=document.querySelector(`.trait-map-v3 i:nth-child(${i+1})`);
     if(dot)dot.style.setProperty("--y",(82-v)+"%");
+    document.querySelectorAll(".trait-map-v3 i").forEach((item,idx)=>item.classList.toggle("active",idx===i));
+    document.querySelectorAll(".trait-step-v3").forEach((item,idx)=>{
+      item.classList.toggle("is-active",idx===i);
+      item.classList.toggle("is-near",idx===i-1||idx===i+1);
+      item.classList.toggle("is-dim",idx!==i&&idx!==i-1&&idx!==i+1);
+    });
   }
 });
 function fit(){const s=Math.min((innerWidth-18)/390,(innerHeight-18)/844,1);document.getElementById("phoneScale").style.setProperty("--scale",s)}
