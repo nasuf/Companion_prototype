@@ -8645,3 +8645,112 @@ button:active,.paper-card:active,.card-msg:active,.drawer-btn:active,.round:acti
   background:color-mix(in srgb,var(--event),#111a17 72%);
   border:1px solid color-mix(in srgb,var(--event),transparent 56%);
 }
+
+/* Unified secondary-page top actions. */
+.detail-actions-v10,
+.music-actions-v7,
+.cinema-actions-v6,
+.game-actions-v6,
+.daily-actions-v2,
+.offline-actions-v6,
+.progress-actions-v8{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-shrink:0;
+  gap:14px;
+  margin:8px 0 16px;
+}
+.detail-actions-v10{
+  padding:8px 16px 0;
+}
+.detail-back-v10,
+.music-back-v7,
+.cinema-back-v6,
+.game-back-v6,
+.daily-back-v2,
+.offline-actions-v6 button:first-child,
+.progress-actions-v8 button:first-child{
+  width:48px;
+  height:48px;
+  min-width:48px;
+  padding:0;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  color:#111820;
+  background:rgba(255,255,255,.78);
+  border:1px solid rgba(255,255,255,.82);
+  box-shadow:0 16px 36px rgba(24,36,46,.12),inset 0 1px 0 rgba(255,255,255,.92);
+  backdrop-filter:blur(22px) saturate(1.18);
+}
+.detail-back-v10 .ui-ico,
+.music-back-v7 .ui-ico,
+.cinema-back-v6 .ui-ico,
+.game-back-v6 .ui-ico,
+.daily-back-v2 .ui-ico,
+.offline-actions-v6 button:first-child .ui-ico,
+.progress-actions-v8 button:first-child .ui-ico{
+  width:22px;
+  height:22px;
+  stroke-width:3;
+}
+.detail-share-v10,
+.music-share-v7,
+.cinema-share-v6,
+.game-share-v6,
+.daily-share-v2,
+.offline-actions-v6 button:last-child,
+.progress-actions-v8 button:last-child{
+  height:42px;
+  min-width:82px;
+  padding:0 18px;
+  border-radius:999px;
+  color:white;
+  background:#111820;
+  border:1px solid rgba(17,24,32,.10);
+  box-shadow:0 16px 34px rgba(24,36,46,.14);
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:0;
+  backdrop-filter:blur(18px) saturate(1.08);
+}
+.detail-share-v10:empty{display:none}
+
+.cinema-page-v6 .cinema-back-v6{
+  color:#f7fbf9;
+  background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.07));
+  border-color:rgba(255,255,255,.16);
+  box-shadow:0 18px 40px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.16);
+}
+.cinema-page-v6 .cinema-share-v6{
+  color:#111820;
+  background:#f7fbf9;
+  border-color:rgba(255,255,255,.70);
+  box-shadow:0 16px 34px rgba(0,0,0,.24);
+}
+
+:root[data-theme="dark"] .detail-back-v10,
+:root[data-theme="dark"] .music-back-v7,
+:root[data-theme="dark"] .cinema-back-v6,
+:root[data-theme="dark"] .game-back-v6,
+:root[data-theme="dark"] .daily-back-v2,
+:root[data-theme="dark"] .offline-actions-v6 button:first-child,
+:root[data-theme="dark"] .progress-actions-v8 button:first-child{
+  color:#f7fbf9;
+  background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.07));
+  border-color:rgba(255,255,255,.18);
+  box-shadow:0 18px 40px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.16);
+}
+:root[data-theme="dark"] .detail-share-v10,
+:root[data-theme="dark"] .music-share-v7,
+:root[data-theme="dark"] .cinema-share-v6,
+:root[data-theme="dark"] .game-share-v6,
+:root[data-theme="dark"] .daily-share-v2,
+:root[data-theme="dark"] .offline-actions-v6 button:last-child,
+:root[data-theme="dark"] .progress-actions-v8 button:last-child{
+  color:#111820;
+  background:#f7fbf9;
+  border-color:rgba(255,255,255,.70);
+  box-shadow:0 16px 34px rgba(0,0,0,.24);
+}

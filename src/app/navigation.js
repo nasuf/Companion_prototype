@@ -19,7 +19,7 @@ function activeTab(){if(["online","music","movie","game","daily"].includes(state
 
 function tabbar(){const active=activeTab();return`<nav class="tabbar ${active}-tabbar">${tabItems.map(i=>`<button class="tab ${active===i[0]?"on":""}" aria-label="${i[2]}" data-action="tab" data-page="${i[0]}">${tabIcon(i[1])}</button>`).join("")}</nav>`}
 
-function nav(title,shareKind="",back="chat"){return`<div class="nav"><button class="icon" data-action="page" data-page="${back}" aria-label="返回">${uiIcon("chevron-left")}</button><div class="nav-title">${title}</div>${shareKind?`<button class="share" data-action="share" data-kind="${shareKind}">发聊天</button>`:""}</div>`}
+function nav(title,shareKind="",back="chat"){return`<div class="detail-actions-v10" aria-label="${title}"><button class="detail-back-v10" data-action="page" data-page="${back}" aria-label="返回">${uiIcon("chevron-left")}</button>${shareKind?`<button class="detail-share-v10" data-action="share" data-kind="${shareKind}">发聊天</button>`:""}</div>`}
 
 function tabTitle(icon,title,sub){return`<div class="tab-title"><div class="mark">${uiIcon(icon)||icon}</div><div><h2>${title}</h2><p>${sub}</p></div></div>`}
 
