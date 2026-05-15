@@ -4225,10 +4225,10 @@ button:active,.paper-card:active,.card-msg:active,.drawer-btn:active,.round:acti
   backdrop-filter:blur(18px);
 }
 .daily-page-v2.daily-food .daily-board-v2{
-  --daily-image:url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80');
+  --daily-image:url('assets/prototype/remote/unsplash-1512621776951-a57141f2eefd.jpg');
 }
 .daily-page-v2.daily-photo .daily-board-v2{
-  --daily-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80');
+  --daily-image:url('assets/prototype/remote/unsplash-1500530855697-b586d89ba3ee.jpg');
 }
 .daily-page-v2.daily-food .daily-board-v2:before,
 .daily-page-v2.daily-photo .daily-board-v2:before{mix-blend-mode:normal;opacity:.64}
