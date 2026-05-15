@@ -1,3 +1,11 @@
+function updateTraitFocus(index){
+  document.querySelectorAll(".trait-map-v3 i").forEach((item,idx)=>item.classList.toggle("active",idx===index));
+  document.querySelectorAll(".trait-step-v3").forEach((item,idx)=>{
+    item.classList.toggle("is-active",idx===index);
+    item.classList.toggle("is-near",idx===index-1||idx===index+1);
+    item.classList.toggle("is-dim",idx!==index&&idx!==index-1&&idx!==index+1);
+  });
+}
 document.addEventListener("click",e=>{
   if(state.keyboard&&state.page==="chat"&&!e.target.closest(".keyboard,.composer")){state.keyboard=false;render();return}
   if(state.emoji&&state.page==="chat"&&!e.target.closest(".emoji-panel,.composer")){state.emoji=false;render();return}
@@ -9,14 +17,12 @@ document.addEventListener("click",e=>{
   if(a==="trait-step"){
     state.activeTrait=Math.max(0,Math.min(state.dimensions.length-1,Number(el.dataset.index)||0));
     render();
-    requestAnimationFrame(()=>document.querySelector(`.trait-step-v3[data-step-index="${state.activeTrait}"]`)?.scrollIntoView({block:"center",behavior:"smooth"}));
     return;
   }
   if(a==="trait-step-shift"){
     const dir=Number(el.dataset.dir)||0;
     state.activeTrait=Math.max(0,Math.min(state.dimensions.length-1,(state.activeTrait||0)+dir));
     render();
-    requestAnimationFrame(()=>document.querySelector(`.trait-step-v3[data-step-index="${state.activeTrait}"]`)?.scrollIntoView({block:"center",behavior:"smooth"}));
     return;
   }
   if(a==="movie-toggle"){state.movieControls=!state.movieControls;el.classList.toggle("controls-on",state.movieControls);return}
@@ -64,13 +70,8 @@ document.addEventListener("input",e=>{
     const label=row&&row.querySelector(`[data-dim-value="${i}"]`);
     if(label)label.textContent=String(v);
     const dot=document.querySelector(`.trait-map-v3 i:nth-child(${i+1})`);
-    if(dot)dot.style.setProperty("--y",(82-v)+"%");
-    document.querySelectorAll(".trait-map-v3 i").forEach((item,idx)=>item.classList.toggle("active",idx===i));
-    document.querySelectorAll(".trait-step-v3").forEach((item,idx)=>{
-      item.classList.toggle("is-active",idx===i);
-      item.classList.toggle("is-near",idx===i-1||idx===i+1);
-      item.classList.toggle("is-dim",idx!==i&&idx!==i-1&&idx!==i+1);
-    });
+    if(dot)dot.style.setProperty("--y",(typeof traitMapY==="function"?traitMapY(v):10+(100-v)*.8)+"%");
+    updateTraitFocus(i);
   }
 });
 function fit(){const s=Math.min((innerWidth-18)/390,(innerHeight-18)/844,1);document.getElementById("phoneScale").style.setProperty("--scale",s)}

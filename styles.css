@@ -6801,14 +6801,17 @@ button:active,.paper-card:active,.card-msg:active,.drawer-btn:active,.round:acti
 :root[data-theme="dark"] .create-hero-v3 p{color:rgba(235,242,238,.58)}
 :root[data-theme="dark"] .trait-step-panel-v3{
   background:
-    radial-gradient(120px 92px at 92% 8%,color-mix(in srgb,var(--accent),transparent 90%),transparent 70%),
-    linear-gradient(145deg,rgba(255,255,255,.078),rgba(255,255,255,.045));
-  border-color:rgba(255,255,255,.12);
+    linear-gradient(90deg,color-mix(in srgb,var(--accent),transparent 92%),transparent 62%);
+  border-color:rgba(255,255,255,.08);
 }
 :root[data-theme="dark"] .trait-step-panel-v3 .dimension-top small,
 :root[data-theme="dark"] .trait-step-actions-v3 button{
   background:rgba(255,255,255,.08);
   color:rgba(235,242,238,.76);
+}
+:root[data-theme="dark"] .trait-step-v3.dimension-row{
+  background:transparent;
+  border-color:transparent;
 }
 .create-v3 .pro-scroll{
   padding:14px 16px 110px;
@@ -6859,27 +6862,134 @@ button:active,.paper-card:active,.card-msg:active,.drawer-btn:active,.round:acti
 .identity-card-v3,
 .gender-card-v3,
 .trait-studio-v3{
-  border-radius:28px;
-  border-color:rgba(255,255,255,.72);
-  background:rgba(255,255,255,.72);
-  box-shadow:0 20px 48px rgba(56,82,88,.10);
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  backdrop-filter:none;
+}
+.identity-card-v3,
+.gender-card-v3{
+  position:relative;
+  display:grid;
+  grid-template-columns:64px 1fr;
+  align-items:center;
+  gap:14px;
+  padding:13px 4px 14px;
+  margin-top:10px;
+}
+.identity-card-v3{
+  margin-top:20px;
+}
+.identity-card-v3:after,
+.gender-card-v3:after{
+  content:"";
+  position:absolute;
+  left:4px;
+  right:4px;
+  bottom:0;
+  height:1px;
+  background:linear-gradient(90deg,rgba(24,32,38,.12),rgba(24,32,38,.04),rgba(24,32,38,.10));
+}
+.identity-card-v3 .form-label,
+.gender-card-v3 .form-label{
+  margin:0;
+  color:rgba(24,32,38,.42);
+  font-size:11px;
+  font-weight:880;
+  letter-spacing:.08em;
 }
 .trait-studio-v3{
-  padding:16px;
+  padding:0 4px;
+  margin-top:24px;
+}
+.create-v3 .name-input{
+  height:42px;
+  border:0;
+  border-radius:14px;
+  padding:0 12px;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.52),rgba(255,255,255,.18));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.68);
+  font-size:22px;
+  font-weight:880;
+  color:#10161a;
+}
+.create-v3 .gender-row{
+  gap:3px;
+  padding:3px;
+  border:1px solid rgba(24,32,38,.07);
+  border-radius:999px;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.48),rgba(255,255,255,.18));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.70);
+}
+.create-v3 .gender-pill{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  height:32px;
+  border:0;
+  border-radius:999px;
+  background:transparent;
+  color:rgba(24,32,38,.48);
+  box-shadow:none;
+  font-size:12px;
+  font-weight:850;
+}
+.create-v3 .gender-pill.on{
+  color:#10161a;
+  background:rgba(255,255,255,.82);
+  box-shadow:0 8px 18px rgba(56,82,88,.08),inset 0 1px 0 rgba(255,255,255,.88);
+}
+.create-v3 .gender-pill.on:after{
+  display:none;
+}
+.trait-studio-v3 .dimension-head{
+  align-items:center;
+  gap:14px;
+  margin-bottom:12px;
+}
+.trait-studio-v3 .dimension-head b{
+  display:block;
+  font-size:24px;
+  line-height:1.1;
+}
+.trait-studio-v3 .dimension-head .form-label{
+  max-width:250px;
+  color:rgba(24,32,38,.58);
+  font-size:12px;
+  line-height:1.45;
+}
+.trait-studio-v3 .dimension-head button{
+  flex:0 0 auto;
+  height:34px;
+  padding:0 13px;
+  border:1px solid rgba(24,32,38,.08);
+  background:rgba(255,255,255,.42);
+  box-shadow:none;
 }
 .trait-map-v3{
   position:relative;
-  height:128px;
-  margin:12px 0 14px;
-  border-radius:26px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.74);
+  height:138px;
+  margin:10px 0 0;
+  border-radius:0;
+  overflow:visible;
+  border:0;
   background:
-    linear-gradient(90deg,rgba(21,24,28,.045) 1px,transparent 1px) 0 0/34px 100%,
-    linear-gradient(180deg,rgba(21,24,28,.045) 1px,transparent 1px) 0 0/100% 32px,
-    radial-gradient(190px 120px at 85% 18%,rgba(31,111,255,.16),transparent 70%),
-    radial-gradient(170px 110px at 16% 84%,rgba(24,198,192,.16),transparent 70%),
-    rgba(255,255,255,.62);
+    linear-gradient(90deg,rgba(21,24,28,.042) 1px,transparent 1px) 0 0/34px 100%,
+    linear-gradient(180deg,rgba(21,24,28,.042) 1px,transparent 1px) 0 0/100% 34px,
+    radial-gradient(190px 118px at 83% 20%,rgba(31,111,255,.11),transparent 72%),
+    radial-gradient(170px 110px at 15% 84%,rgba(24,198,192,.11),transparent 74%);
+  -webkit-mask-image:
+    linear-gradient(90deg,transparent 0,#000 10%,#000 90%,transparent 100%),
+    linear-gradient(180deg,transparent 0,#000 13%,#000 87%,transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:
+    linear-gradient(90deg,transparent 0,#000 10%,#000 90%,transparent 100%),
+    linear-gradient(180deg,transparent 0,#000 13%,#000 87%,transparent 100%);
+  mask-composite:intersect;
 }
 .trait-map-v3:before{
   content:"";
@@ -6894,136 +7004,166 @@ button:active,.paper-card:active,.card-msg:active,.drawer-btn:active,.round:acti
   position:absolute;
   left:var(--x);
   top:var(--y);
-  width:14px;
-  height:14px;
+  width:13px;
+  height:13px;
   border-radius:50%;
   background:var(--c);
-  box-shadow:0 0 0 6px color-mix(in srgb,var(--c),transparent 86%),0 12px 22px color-mix(in srgb,var(--c),transparent 76%);
+  box-shadow:0 0 0 7px color-mix(in srgb,var(--c),transparent 88%),0 12px 22px color-mix(in srgb,var(--c),transparent 76%);
   transform:translate(-50%,-50%);
-  transition:top 160ms ease;
+  transition:top 160ms ease,width 160ms ease,height 160ms ease;
+  animation:traitMapBreath 2.8s ease-in-out infinite;
 }
 .trait-map-v3 i.active{
-  width:18px;
-  height:18px;
-  box-shadow:0 0 0 8px color-mix(in srgb,var(--c),transparent 84%),0 16px 30px color-mix(in srgb,var(--c),transparent 62%);
+  width:16px;
+  height:16px;
+  box-shadow:0 0 0 9px color-mix(in srgb,var(--c),transparent 84%),0 16px 30px color-mix(in srgb,var(--c),transparent 64%);
 }
 .trait-steps-v3{
   position:relative;
   display:grid;
-  gap:12px;
-  max-height:382px;
-  overflow-y:auto;
-  overscroll-behavior:contain;
-  scroll-snap-type:y proximity;
-  padding:3px 2px 8px;
+  gap:0;
+  max-height:none;
+  overflow:visible;
+  overscroll-behavior:auto;
+  scroll-snap-type:none;
+  scroll-behavior:auto;
+  margin-top:0;
+  padding:0 10px 0 18px;
+  -webkit-mask-image:none;
+  mask-image:none;
 }
 .trait-steps-v3::-webkit-scrollbar{width:0;height:0}
 .trait-step-v3{
   position:relative;
   display:grid;
-  grid-template-columns:42px 1fr;
-  gap:12px;
-  align-items:stretch;
-  min-height:142px;
+  grid-template-columns:18px minmax(0,1fr);
+  gap:9px;
+  align-items:center;
+  min-height:58px;
   padding:0;
   border:0;
   background:transparent;
-  scroll-snap-align:center;
-  transition:opacity 180ms ease,filter 180ms ease,transform 180ms ease;
+  scroll-snap-align:none;
+  scroll-snap-stop:normal;
+  opacity:1;
+  filter:none;
+  transform:none;
+}
+.trait-step-v3:after{
+  content:"";
+  position:absolute;
+  z-index:0;
+  left:-18px;
+  right:-12px;
+  top:0;
+  bottom:0;
+  background:
+    linear-gradient(90deg,transparent 0%,color-mix(in srgb,var(--accent),transparent 98%) 24%,color-mix(in srgb,var(--accent),transparent 95%) 58%,transparent 100%);
+  pointer-events:none;
 }
 .trait-step-v3:before{
   content:"";
   position:absolute;
-  left:20px;
-  top:-14px;
-  bottom:-14px;
+  z-index:1;
+  left:5px;
+  top:-4px;
+  bottom:-4px;
   width:1px;
   background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--accent),white 40%),transparent);
-  opacity:.34;
+  opacity:.22;
 }
-.trait-step-v3:first-child:before{top:20px}
-.trait-step-v3:last-child:before{bottom:calc(100% - 20px)}
+.trait-step-v3:first-child:before{top:29px}
+.trait-step-v3:last-child:before{bottom:calc(100% - 29px)}
 .trait-step-v3.is-dim{
-  opacity:.46;
-  filter:saturate(.72);
-  transform:scale(.985);
+  opacity:1;
+  filter:none;
+  transform:none;
 }
 .trait-step-v3.is-near{
-  opacity:.72;
-  filter:saturate(.88);
+  opacity:1;
+  filter:none;
 }
 .trait-step-v3.is-active{
   opacity:1;
-  transform:scale(1);
+  transform:none;
 }
 .trait-node-v3{
   position:relative;
   z-index:2;
-  align-self:start;
-  width:42px;
-  height:42px;
-  border:1px solid color-mix(in srgb,var(--accent),white 42%);
-  border-radius:16px;
-  background:
-    radial-gradient(circle at 32% 24%,rgba(255,255,255,.88),transparent 34%),
-    color-mix(in srgb,var(--accent),white 68%);
-  color:color-mix(in srgb,var(--accent),#10212a 36%);
-  font-size:12px;
-  font-weight:900;
-  box-shadow:0 14px 26px color-mix(in srgb,var(--accent),transparent 82%),inset 0 1px 0 rgba(255,255,255,.82);
+  align-self:center;
+  justify-self:start;
+  width:8px;
+  height:8px;
+  border:0;
+  border-radius:50%;
+  background:var(--accent);
+  color:transparent;
+  font-size:0;
+  box-shadow:0 0 0 5px color-mix(in srgb,var(--accent),transparent 92%),0 7px 16px color-mix(in srgb,var(--accent),transparent 82%);
+  animation:traitDotBreath 2.4s ease-in-out infinite;
 }
+.trait-node-v3 span{display:block;width:100%;height:100%;border-radius:50%}
 .trait-step-v3.is-active .trait-node-v3{
-  color:#fff;
-  background:
-    radial-gradient(circle at 34% 22%,rgba(255,255,255,.82),transparent 28%),
-    linear-gradient(135deg,color-mix(in srgb,var(--accent),white 12%),color-mix(in srgb,var(--accent),#1f6fff 24%));
-  box-shadow:0 18px 34px color-mix(in srgb,var(--accent),transparent 68%),inset 0 1px 0 rgba(255,255,255,.42);
+  width:8px;
+  height:8px;
+  background:var(--accent);
+  box-shadow:0 0 0 5px color-mix(in srgb,var(--accent),transparent 92%),0 7px 16px color-mix(in srgb,var(--accent),transparent 82%);
 }
 .trait-step-panel-v3{
-  min-height:142px;
-  padding:14px;
-  border-radius:24px;
-  border:1px solid rgba(255,255,255,.76);
-  background:
-    radial-gradient(120px 92px at 92% 8%,color-mix(in srgb,var(--accent),transparent 86%),transparent 70%),
-    linear-gradient(145deg,rgba(255,255,255,.78),rgba(255,255,255,.56));
-  box-shadow:0 16px 38px rgba(56,82,88,.08),inset 0 1px 0 rgba(255,255,255,.90);
-  backdrop-filter:blur(20px) saturate(1.14);
+  position:relative;
+  z-index:1;
+  min-width:0;
+  min-height:58px;
+  padding:7px 0 8px;
+  border-radius:0;
+  border:0;
+  background:transparent;
+  box-shadow:none;
+  backdrop-filter:none;
+  transition:background 180ms ease,border-color 180ms ease,box-shadow 180ms ease;
+}
+.trait-step-panel-v3:after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent 0%,rgba(24,32,38,.055) 16%,rgba(24,32,38,.055) 78%,transparent 100%);
 }
 .trait-step-v3.is-active .trait-step-panel-v3{
-  border-color:color-mix(in srgb,var(--accent),white 54%);
-  box-shadow:0 22px 52px color-mix(in srgb,var(--accent),transparent 88%),0 16px 38px rgba(56,82,88,.10),inset 0 1px 0 rgba(255,255,255,.94);
+  background:transparent;
+  box-shadow:none;
 }
 .trait-step-panel-v3 .dimension-top{
-  font-size:15px;
+  font-size:14px;
 }
 .trait-step-panel-v3 .dimension-top small{
-  min-width:38px;
-  height:28px;
-  display:grid;
-  place-items:center;
-  border-radius:999px;
+  min-width:30px;
+  height:auto;
+  display:block;
+  text-align:right;
+  border-radius:0;
   color:#10161a;
-  background:rgba(255,255,255,.76);
+  background:transparent;
+  font-size:12px;
 }
 .trait-step-panel-v3 .range-line{
-  height:34px;
+  height:17px;
 }
 .trait-step-panel-v3 .range-line::-webkit-slider-runnable-track{
-  height:7px;
+  height:3px;
   background:
     linear-gradient(90deg,color-mix(in srgb,var(--accent),white 34%) 0 var(--v),rgba(24,32,38,.08) var(--v) 100%);
 }
 .trait-step-panel-v3 .range-line::-webkit-slider-thumb{
-  width:22px;
-  height:22px;
-  margin-top:-7.5px;
-  border:5px solid color-mix(in srgb,var(--accent),#1b2b31 8%);
+  width:15px;
+  height:15px;
+  margin-top:-6px;
+  border:4px solid color-mix(in srgb,var(--accent),#1b2b31 8%);
 }
 .trait-step-actions-v3{
-  display:flex;
-  justify-content:space-between;
-  margin-top:6px;
+  display:none;
 }
 .trait-step-actions-v3 button{
   height:28px;
@@ -7041,6 +7181,91 @@ button:active,.paper-card:active,.card-msg:active,.drawer-btn:active,.round:acti
 }
 .trait-step-actions-v3 button:disabled{
   opacity:.36;
+}
+@keyframes traitDotBreath{
+  0%,100%{transform:scale(1);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent),transparent 92%),0 7px 16px color-mix(in srgb,var(--accent),transparent 82%)}
+  50%{transform:scale(1.05);box-shadow:0 0 0 7px color-mix(in srgb,var(--accent),transparent 96%),0 10px 22px color-mix(in srgb,var(--accent),transparent 74%)}
+}
+@keyframes traitMapBreath{
+  0%,100%{box-shadow:0 0 0 6px color-mix(in srgb,var(--c),transparent 89%),0 12px 22px color-mix(in srgb,var(--c),transparent 78%)}
+  50%{box-shadow:0 0 0 13px color-mix(in srgb,var(--c),transparent 95%),0 16px 30px color-mix(in srgb,var(--c),transparent 70%)}
+}
+:root[data-theme="dark"] .create-v3 .pro-scroll{
+  background:
+    radial-gradient(300px 240px at 86% 14%,rgba(24,198,192,.10),transparent 72%),
+    radial-gradient(260px 220px at 2% 38%,rgba(124,60,255,.10),transparent 74%),
+    linear-gradient(180deg,#111614 0%,#101816 100%);
+}
+:root[data-theme="dark"] .identity-card-v3,
+:root[data-theme="dark"] .gender-card-v3,
+:root[data-theme="dark"] .trait-studio-v3{
+  background:transparent;
+  border-color:transparent;
+  box-shadow:none;
+}
+:root[data-theme="dark"] .create-v3 .name-input,
+:root[data-theme="dark"] .create-v3 .gender-row{
+  border-color:rgba(255,255,255,.12);
+}
+:root[data-theme="dark"] .create-v3 .name-input{
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.09),rgba(255,255,255,.03));
+  color:#f5fbfa;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.10);
+}
+:root[data-theme="dark"] .identity-card-v3:after,
+:root[data-theme="dark"] .gender-card-v3:after{
+  background:linear-gradient(90deg,rgba(255,255,255,.12),rgba(255,255,255,.03),rgba(255,255,255,.10));
+}
+:root[data-theme="dark"] .identity-card-v3 .form-label,
+:root[data-theme="dark"] .gender-card-v3 .form-label{
+  color:rgba(235,242,238,.48);
+}
+:root[data-theme="dark"] .create-v3 .gender-row{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.025));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09);
+}
+:root[data-theme="dark"] .create-v3 .gender-pill{
+  background:transparent;
+  border-color:transparent;
+  color:rgba(235,242,238,.48);
+}
+:root[data-theme="dark"] .create-v3 .gender-pill.on{
+  background:rgba(255,255,255,.12);
+  color:#f5fbfa;
+  box-shadow:0 8px 18px rgba(0,0,0,.14),inset 0 1px 0 rgba(255,255,255,.12);
+}
+:root[data-theme="dark"] .create-v3 .gender-pill.on:after{
+  background:#f5fbfa;
+}
+:root[data-theme="dark"] .trait-studio-v3 .dimension-head .form-label,
+:root[data-theme="dark"] .trait-axis-labels{
+  color:rgba(235,242,238,.52);
+}
+:root[data-theme="dark"] .trait-studio-v3 .dimension-head button{
+  background:rgba(255,255,255,.07);
+  border-color:rgba(255,255,255,.10);
+  color:rgba(235,242,238,.76);
+}
+:root[data-theme="dark"] .trait-map-v3{
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.048) 1px,transparent 1px) 0 0/34px 100%,
+    linear-gradient(180deg,rgba(255,255,255,.048) 1px,transparent 1px) 0 0/100% 34px,
+    radial-gradient(190px 118px at 83% 20%,rgba(31,111,255,.14),transparent 72%),
+    radial-gradient(170px 110px at 15% 84%,rgba(24,198,192,.12),transparent 74%);
+}
+:root[data-theme="dark"] .trait-step-panel-v3,
+:root[data-theme="dark"] .trait-step-v3.is-active .trait-step-panel-v3{
+  border-color:rgba(255,255,255,.08);
+  box-shadow:none;
+}
+:root[data-theme="dark"] .trait-step-panel-v3:after{
+  background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.08) 16%,rgba(255,255,255,.08) 78%,transparent 100%);
+}
+:root[data-theme="dark"] .trait-step-panel-v3 .dimension-top small{
+  background:transparent;
+  color:rgba(235,242,238,.78);
 }
 .trait-grid-v3{
   display:grid;
@@ -7072,9 +7297,16 @@ button:active,.paper-card:active,.card-msg:active,.drawer-btn:active,.round:acti
 .trait-axis-labels{
   display:flex;
   justify-content:space-between;
-  margin:7px 1px 4px;
+  margin:6px 1px 3px;
   font-size:9.5px;
   color:rgba(24,32,38,.42);
+}
+.trait-step-panel-v3 .trait-axis-labels{
+  margin:4px 1px 2px;
+  font-size:9px;
+}
+:root[data-theme="dark"] .trait-step-panel-v3 .trait-axis-labels{
+  color:rgba(235,242,238,.52);
 }
 .trait-card-v3 .range-line{
   height:28px;
