@@ -33,15 +33,16 @@ document.addEventListener("click",e=>{
   if(a==="music-display-toggle"){const top=document.querySelector(".music-scroll-v7")?.scrollTop||0;state.musicPanel=state.musicPanel==="lyrics"?"wave":"lyrics";render();requestAnimationFrame(()=>{const scroller=document.querySelector(".music-scroll-v7");if(scroller)scroller.scrollTop=top});return}
   if(a==="music-play-toggle"){const top=document.querySelector(".music-scroll-v7")?.scrollTop||0;state.musicPlaying=!state.musicPlaying;render();requestAnimationFrame(()=>{const scroller=document.querySelector(".music-scroll-v7");if(scroller)scroller.scrollTop=top});return}
   if(a==="music-tab"){const top=document.querySelector(".music-scroll-v7")?.scrollTop||0;state.musicTab=el.dataset.music||"agent";render();requestAnimationFrame(()=>{const scroller=document.querySelector(".music-scroll-v7");if(scroller)scroller.scrollTop=top});return}
+  if(a==="game-group"){const group=el.dataset.group||"board";state.activeGameGroup=group;document.querySelectorAll(".game-group-card-v8").forEach(card=>{const open=card.dataset.group===group;card.classList.toggle("is-open",open);card.setAttribute("aria-expanded",open?"true":"false")});return}
   if(a==="daily-tab"){const top=document.querySelector(".daily-scroll-v2")?.scrollTop||0;state.dailyTab=el.dataset.daily;state.dailyScrollTop=top;render();restoreDailyScroll(top);return}
   if(a==="photo-scroll"){scrollPhotoRail(el.dataset.group,el.dataset.dir);return}
   if(a==="open-photo"){const top=document.querySelector(".daily-scroll-v2")?.scrollTop||0;state.dailyScrollTop=top;state.photoViewer={src:el.dataset.src,title:el.dataset.title,note:el.dataset.note};render();restoreDailyScroll(top);return}
   if(a==="close-photo"){const top=state.dailyScrollTop||0;state.photoViewer=null;render();restoreDailyScroll(top);return}
-  if(a==="create-agent"){state.currentAgent=(state.agentName||"小芜").trim()||"小芜";state.messages=[{from:"ai",text:"我在，今天想被认真听一会儿吗？"},{from:"me",text:`刚创建好你，想先试试你会怎么陪我聊天。`},{from:"ai",text:"那我们慢慢来。我会像朋友一样接话，也会记住你喜欢的节奏。"},{from:"card",kind:"music",title:"线上一起听音乐",desc:`${state.currentAgent}准备了一首轻一点的歌，适合用来校准你们的第一段陪伴节奏。`,foot:"音乐 · 点击进入"},{from:"card",kind:"progress",title:"动态进程",desc:"首次陪伴任务已创建：试聊 5 分钟、设置一个提醒、完成一次日常分享。",foot:"进程 · 点击查看"}];state.page="chat";state.drawer=false;state.modal=null;state.keyboard=false;state.emoji=false;state.more=false}
+  if(a==="create-agent"){state.currentAgent=(state.agentName||"小芜").trim()||"小芜";state.messages=[{from:"ai",text:"昨天你说的项目进展怎么样了？"},{from:"me",text:"不是特别顺利，目前卡在数据的调取上，还在攻克。"},{from:"ai",text:"万事开头难，过了这道坎，后面肯定顺利了。"},{from:"me",text:"嗯嗯，我也觉得，你呢，今天忙啥呢"},{from:"ai",text:"我今天去逛公园了，天气还不错，听到一首歌不错，你也一起听听呢。"},{from:"card",kind:"music",title:"一起听这首歌",desc:"小芜分享了一首刚在公园听到的歌，点开后可以同步播放，也可以一边听一边聊天。",foot:"音乐 · 点击进入"},{from:"me",text:"我喜欢这首歌"}];state.page="chat";state.drawer=false;state.modal=null;state.keyboard=false;state.emoji=false;state.more=false}
   if(a==="drawer"){state.drawer=true;state.keyboard=false;state.emoji=false;state.more=false}
   if(a==="close"){state.drawer=false;state.keyboard=false;state.emoji=false;state.more=false}
   if(a==="tab"){state.page=el.dataset.page;state.drawer=false;state.modal=null;state.keyboard=false;state.emoji=false;state.more=false;state.photoViewer=null}
-  if(a==="page"){state.page=el.dataset.page;state.drawer=false;state.keyboard=false;state.emoji=false;state.more=false;state.photoViewer=null}
+  if(a==="page"){state.page=el.dataset.page;if(el.dataset.daily)state.dailyTab=el.dataset.daily;state.drawer=false;state.keyboard=false;state.emoji=false;state.more=false;state.photoViewer=null}
   if(a==="share")return addShare(el.dataset.kind);
   if(a==="modal")state.modal=el.dataset.modal;
   if(a==="close-modal")state.modal=null;
@@ -56,7 +57,7 @@ document.addEventListener("click",e=>{
   if(a==="emoji-pick"){state.messages.push({from:"me",text:el.dataset.emoji});state.messages.push({from:"ai",text:"收到这个表情了。那我就先不追问，陪你在这里停一小会儿。"});state.emoji=false}
   if(a==="chat-tool"){
     const tool=el.dataset.tool;
-    const copy={photo:["【图片】窗外今天很漂亮。","这张很像电影开场。天色有点温柔，我想把它放进我们的日常分享里。"],redpacket:["发了一个小红包。","我收到了这份心意。先替你把气氛变轻一点。"],call:["想连麦聊一会儿。","可以，我会把语速放慢一点，先听你说。"],gift:["送了一个小礼物。","这个礼物我会收好，也会记得你今天想表达的温柔。"]}[tool]||["打开了一个功能。","我在，继续。"];
+    const copy={photo:["【图片】窗外今天很漂亮。","这张很像电影开场。天色有点温柔，我想把它放进我们的日常分享里。"],camera:["想拍一张现在的画面。","好呀，拍下来就不用急着解释，画面会先替你说一点。"],redpacket:["发了一个小红包。","我收到了这份心意。先替你把气氛变轻一点。"],location:["分享了当前位置。","我看到了。路上慢慢来，我会帮你记着这个地方。"],search:["想查找一段聊天内容。","可以，我帮你从我们聊过的内容里慢慢找，不用你自己翻。"],phone:["想打个电话。","可以，我会把声音放轻一点。你不用整理好语言再开口。"]}[tool]||["打开了一个功能。","我在，继续。"];
     state.messages.push({from:"me",text:copy[0]});
     state.messages.push({from:"ai",text:copy[1]});
     state.more=false;

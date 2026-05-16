@@ -1,10 +1,10 @@
 // Split from the original prototype. Loaded as classic scripts so existing global behavior is preserved.
 function profile(){
   const stats=[
-    ["亲密阶段","P4","稳定陪伴","#ffbe3d"],
-    ["陪伴天数","126","天","#22c66b"],
-    ["累计聊天","48","小时","#1f6fff"],
-    ["消息总数","3,284","条","#7c3cff"]
+    ["亲密阶段","P4","稳定陪伴","#55746f"],
+    ["陪伴天数","126","天","#55746f"],
+    ["累计聊天","48","小时","#55746f"],
+    ["消息总数","3,284","条","#55746f"]
   ];
   const settings=[
     ["mail","通知提醒","主动消息、任务提醒、免打扰时段","#1f6fff"],
@@ -19,7 +19,7 @@ function profile(){
       <section class="profile-hero-v6">
         <div class="pro-kicker">personal space</div>
         <h2>山木和${state.currentAgent}</h2>
-        <p>你和 TA 的资料、陪伴状态、界面偏好都在这里统一管理。</p>
+        <p>我们一起走过的时光，都在这里慢慢沉淀。</p>
         <div class="profile-orbit-v6">
           <div class="profile-person-v6 me">
             <div class="profile-photo-v6 image-avatar">${userPortrait()}</div>
@@ -34,7 +34,7 @@ function profile(){
       </section>
       <section class="profile-section-v6 profile-status-v6">
         <div class="profile-section-head-v6">
-          <b>陪伴档案</b>
+          <b>我们的时光</b>
           <span>唯一伴生对象 · 女 · ENFP</span>
         </div>
         <div class="profile-stat-line-v6">${stats.map(x=>`<button class="profile-stat-v6" style="--profile-accent:${x[3]}" data-action="share" data-kind="profile"><small>${x[0]}</small><strong>${x[1]}</strong><em>${x[2]}</em></button>`).join("")}</div>

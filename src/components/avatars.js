@@ -1,4 +1,4 @@
 // Split from the original prototype. Loaded as classic scripts so existing global behavior is preserved.
-function agentPortrait(){return`<img alt="${state.currentAgent}头像" src="assets/prototype/remote/unsplash-1494790108377-be9c29b29330.jpg">`}
+function agentPortrait(){return`<img class="agent-portrait-img" alt="${state.currentAgent}头像" src="assets/prototype/agent-avatar.svg">`}
 
-function userPortrait(){return`<img alt="我的头像" src="assets/prototype/remote/unsplash-1500648767791-00dcc994a43e.jpg">`}
+function userPortrait(){return`<img class="user-portrait-img" alt="我的头像" src="assets/prototype/remote/user-avatar-shanmu.jpg">`}

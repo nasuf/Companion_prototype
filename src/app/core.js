@@ -41,7 +41,7 @@ const dimBlueprint=[
 const state={
   page:"login",drawer:false,modal:null,keyboard:false,emoji:false,more:false,currentAgent:"小芜",theme:"blue",activeTrait:0,
   agentName:"小芜",agentGender:"female",
-  movieIndex:0,movieControls:false,offlineTicketFlipped:false,dailyTab:"book",musicTab:"agent",musicPanel:"wave",musicPlaying:true,dailyScrollTop:0,photoViewer:null,
+  movieIndex:0,movieControls:false,offlineTicketFlipped:false,offlineTicketAutoDone:false,dailyTab:"photo",musicTab:"agent",musicPanel:"wave",musicPlaying:true,dailyScrollTop:0,photoViewer:null,activeGameGroup:"board",
   dimensions:dimBlueprint.map(d=>({name:d[0],low:d[1],high:d[2],value:d[3]})),
   messages:chatScripts[0].map(item=>({...item}))
 };

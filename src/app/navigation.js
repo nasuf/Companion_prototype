@@ -13,6 +13,18 @@ function render(){
   if(state.more&&state.page==="chat")app.insertAdjacentHTML("beforeend",chatMorePanel());
   if(state.photoViewer)app.insertAdjacentHTML("beforeend",photoViewer());
   if(state.page==="daily")bindDailyScroll();
+  if(state.page==="offlineInvite"&&!state.offlineTicketAutoDone&&!state.offlineTicketFlipped){
+    state.offlineTicketAutoDone=true;
+    setTimeout(()=>{
+      if(state.page!=="offlineInvite"||state.offlineTicketFlipped)return;
+      state.offlineTicketFlipped=true;
+      const ticket=document.querySelector(".offline-ticket-v6");
+      if(ticket){
+        ticket.classList.add("is-flipped");
+        ticket.setAttribute("aria-pressed","true");
+      }
+    },1000);
+  }
   requestAnimationFrame(()=>{const s=document.querySelector(".chat-scroll");if(s)s.scrollTop=s.scrollHeight});
 }
 
